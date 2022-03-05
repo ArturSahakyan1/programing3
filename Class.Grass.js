@@ -7,7 +7,7 @@ class Grass extends LivingCreature {
         var emptyCells = this.chooseCell(0);
         var newCell = random(emptyCells);
 
-        if (newCell && this.multiply >= 8) {
+        if (newCell && this.multiply >= d) {
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 1;

@@ -30,3 +30,9 @@ class LivingCreature {
         return found;
     }
 }
+
+//  class Weather {
+//      constructor (multiply,) {
+//          this.multiply
+//      }
+//  }
