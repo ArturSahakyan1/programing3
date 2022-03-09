@@ -12,9 +12,13 @@ app.listen(3000, function(){
 });
 
 
-
 var fs = require('fs');
+
+
+
 var statistics = {};
+
+
 let aa = grassArr.length;
 let bb = grass2Arr.length;
 let cc = grassEaterArr.length;

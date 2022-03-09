@@ -1,4 +1,4 @@
-function generator(matLen, gr, grEat, pr, gr2, mah, ul) {
+function generator(matLen, gr, grEat, pr, gr2, mah, ul, pix) {
     let matrix = [];
     for (let i = 0; i < matLen; i++) {
         matrix[i] = [];
@@ -11,6 +11,13 @@ function generator(matLen, gr, grEat, pr, gr2, mah, ul) {
         let y = Math.floor(Math.random() * matLen);
         if (matrix[x][y] == 0) {
             matrix[x][y] = 1;
+        }
+    }
+    for (let i = 0; i < pix; i++) {
+        let x = Math.floor(Math.random() * matLen);
+        let y = Math.floor(Math.random() * matLen);
+        if (matrix[x][y] == 0) {
+            matrix[x][y] = 33;
         }
     }
     for (let i = 0; i < grEat; i++) {
@@ -53,14 +60,15 @@ function generator(matLen, gr, grEat, pr, gr2, mah, ul) {
 
 let side = 20;
 
-let matrix = generator(15, 30, 3, 5, 3, 5, 10);
+let matrix = generator(15, 30, 3, 5, 3, 5, 10, 14);
 
-let grassArr = []
+var grassArr = []
 let grassEaterArr = []
 let PredatorArr = []
 let grass2Arr = []
 let mah = []
 let ulArr = []
+let pixArr = []
 
 function setup() {
     createCanvas(matrix[0].length * side, matrix.length * side);
@@ -87,12 +95,17 @@ function setup() {
                 let mah = new Mah(x, y)
                 
             }
+            
             else if (matrix[y][x] == 22) {
                 let ul = new Ul(x, y)
                 ulArr.push(ul)
+            } else if (matrix[y][x] == 33) {
+                let pix = new Pix(x, y)
+                pixArr.push(pix)
             }
         }
         console.log(ulArr);
+        console.log(pixArr)
     }
 }
 function draw() {
@@ -112,6 +125,8 @@ function draw() {
                 fill('black')
             } else if (matrix[y][x] == 22) {
                 fill('purple')
+            } else if (matrix[y][x] == 33) {
+                fill('lightblue')
             }
 
             rect(x * side, y * side, side, side)
@@ -133,12 +148,20 @@ function draw() {
     for (let i in ulArr) {
         ulArr[i].move()
     }
+    for (let i in pixArr) {
+        pixArr[i].eat()
+        pixArr[i].move()
+
+    }
     for (let i in PredatorArr) {
         PredatorArr[i].mul()
         PredatorArr[i].eat()
 
     }
 }
+
+
+console.log(pixArr)
 
 var a = 10
 var b = 10
@@ -210,6 +233,26 @@ img4.addEventListener("click", img44);
 // }
 
 // var fs = require('fs');
+// var statistics = {};
+// let aa = grassArr.length;
+// let bb = grass2Arr.length;
+// let cc = grassEaterArr.length;
+// let dd = ulArr.length;
+// let ff = PredatorArr.length;
+
+// setInterval(function() {
+// statistics.grass = aa;
+// statistics.grassEater = cc;
+// statistics.grass2 = bb;
+// statistics.ul = dd;
+// statistics.Predator = ff;
+// fs.writeFile("statistics.json", JSON.stringify( statistics), function(){
+// console.log("send")
+// })
+// },1000);
+
+
+
 // var statistics = {};
 // let aa = grassArr.length;
 // let bb = grass2Arr.length;
