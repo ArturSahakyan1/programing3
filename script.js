@@ -1,3 +1,5 @@
+
+
 function generator(matLen, gr, grEat, pr, gr2, mah, ul, pix) {
     let matrix = [];
     for (let i = 0; i < matLen; i++) {
@@ -105,14 +107,19 @@ function setup() {
             }
         }
         console.log(ulArr);
-        console.log(pixArr)
+        
     }
 }
 function draw() {
+    if(ulArr.length == 0 & time <= 3) {
+        d = 2
+    } 
+
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 1) {
-                fill('green')
+                
+                fill(color1)
             } else if (matrix[y][x] == 0) {
                 fill('#acacac')
             } else if (matrix[y][x] == 2) {
@@ -159,7 +166,22 @@ function draw() {
 
     }
 }
+var time = 0
 
+
+ setInterval(function () {
+        time++
+    }, 1000);
+
+   
+
+// setInterval(function () {
+//     time++
+// }, 1000);
+
+// setTimeout(function() {
+//     console.log('Hello World!');
+//   }, 3000);
 
 console.log(pixArr)
 
@@ -169,8 +191,7 @@ var c = 10
 var d = 10
 
 function clickHandler(evt) {
-    console.log(evt);
-    var str = "THANKS FOR STARTING ------->>>>> CHOOSE THE WEATHER ";
+    var str = "Welcom choose the weathr";
     this.innerText = str;
 }
 
@@ -196,6 +217,7 @@ function img11(evt) {
     b = 3
     c = 4
     d = 2
+    
 }
 function img22(evt) {
     img5.src = img2.src
@@ -203,6 +225,7 @@ function img22(evt) {
     b = 6
     c = 7
     d = 4
+    
 }
 function img33(evt) {
     img5.src = img3.src
@@ -210,14 +233,16 @@ function img33(evt) {
     b = 11
     c = 12
     d = 8
+    
 }
 function img44(evt) {
     img5.src = img4.src
     a = 20
     b = 21
     c = 22
-    d = 50
+    d=50
 }
+
 
 img1.addEventListener("click", img11);
 img2.addEventListener("click", img22);
@@ -225,6 +250,48 @@ img3.addEventListener("click", img33);
 img4.addEventListener("click", img44);
 
 
+var arr = []
+arr[0] = 0
+
+
+
+
+
+
+
+
+
+
+
+
+let color1 = 'green'
+
+
+
+function asd(evt) {
+   var arrColor1 = [ "red", "green", "white" ]
+   color1 = random(arrColor1)
+   console.log(evt)
+}
+
+var asd = document.getElementById("p");
+console.log(asd)
+asd.addEventListener("click", asd);
+
+
+
+
+
+// var clickCount = 0;
+// function clickHandler1(evt){
+//    clickCount++;
+//    console.log(evt);
+//    var str = "Thanks for clicking " + clickCount;
+//    this.innerText = str;
+// }
+
+// var p = document.getElementById("pElement");
+// p.addEventListener("click", clickHandler);
 // var Aarr = [];
 
 
@@ -270,3 +337,16 @@ img4.addEventListener("click", img44);
 // console.log("send")
 // })
 // },1000);
+
+
+function clickHandler1(evt){
+    color1 = Math.floor(Math.random()*16777215).toString(16);
+    console.log(color1)
+}
+
+var p = document.getElementById("p");
+p.addEventListener("click", clickHandler1);
+
+
+
+
